@@ -48,8 +48,8 @@ const allProjects = [
     description: "Automate doctor roster creation for hospitals.",
     tech: ["FastAPI", "React"],
     image: "/images/project.png",
-    details: "Takes inputs and generates non-overlapping rosters. Skips weekends.",
-    link: "https://github.com/example/roster-generator",
+    details: "Takes inputs and generates non-overlapping rosters. Skips weekends, and ensures no doctor is assigned more than 3 shifts in a week. The system is designed to be user-friendly, with a focus on efficiency and accuracy in roster generation.",
+    link: "https://github.com/Aqueel-i/Doctors-Roster-Generator.git",
   },
   {
     title: "To-Do List (WPF)",
@@ -121,6 +121,7 @@ const allProjects = [
     tech: ["React", "API"],
     image: "/images/project.png",
     details: "Displays movies with poster, year, and description.",
+    
     link: "https://github.com/example/movie-app",
   },];
 
