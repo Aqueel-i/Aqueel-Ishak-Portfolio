@@ -1,12 +1,29 @@
-# React + Vite
+# 🚀 Developer Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A sleek, responsive developer portfolio built using **React** and **Tailwind CSS**, showcasing projects, resume, and contact functionality with a modern UI/UX approach.
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ✨ Features
 
-## Expanding the ESLint configuration
+- 🧠 Modern project grid with:
+  - Tech stack filtering
+  - Search functionality
+  - Animated modal for project details
+  - Pagination for large project sets
+- 📸 Project thumbnails/images support
+- 📩 Contact form with floating labels and icons
+- 📨 Sends email directly using [FormSubmit](https://formsubmit.co/)
+- 📄 Resume section with:
+  - Download button (with toast)
+  - Modal resume preview (PDF embedded)
+- 🌗 Light and smooth animations using Framer Motion
+- ⚙️ Easily customizable components and data
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🛠️ Tech Stack
+
+- React (Vite)
+- Tailwind CSS
+- Framer Motion
+- Lucide Icons
+- FormSubmit (email handler)
+- React Hot Toast
