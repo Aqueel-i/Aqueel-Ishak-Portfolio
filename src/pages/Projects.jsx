@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import { Eye } from "lucide-react"; // Eye icon
 import ProjectModal from "./ProjectModal";
 
 const allProjects = [
@@ -8,23 +9,25 @@ const allProjects = [
     description: "Real-time polling system for events.",
     tech: ["php", "tailwindcss", "Chart.js"],
     image: "/images/project.png",
-    details: "Create polls, view results, and manage users, all in real-time, with a user-friendly interface, and secure authentication, and data storage, ensuring a seamless experience for both poll creators and participants.",
+    details: "Create polls, view results, and manage users...",
     link: "https://github.com/Aqueel-i/Polling-System.git",
+    live: "https://polling-system-eta.vercel.app/"
   },
   {
     title: "A Login Page",
     description: "Simple login page with validation.",
     tech: ["HTML", "CSS", "JavaScript"],
     image: "/images/project.png",
-    details: "A simple login page with validation and error messages, using HTML, CSS, and JavaScript, with a responsive design and user-friendly interface, ensuring a seamless experience across devices.",
+    details: "A simple login page with validation and error messages...",
     link: "https://github.com/Aqueel-i/Just-a-Login-Page.git",
+    live: "https://just-a-login-page.vercel.app/"
   },
   {
     title: "Green Leaf Hospital",
     description: "Hospital management system with appointment booking.",
     tech: ["python", "flask", "Chart.js", "react", "tailwindcss"],
     image: "/images/project.png",
-    details: "A comprehensive hospital management system with appointment booking, patient records, and doctor management, built using Python Flask and React, with a user-friendly interface and secure data handling, ensuring efficient hospital operations.",
+    details: "A comprehensive hospital management system...",
     link: "https://github.com/Aqueel-i/Green-Leaf-Hospital.git",
   },
   {
@@ -34,22 +37,25 @@ const allProjects = [
     image: "/images/project.png",
     details: "Interactive and responsive personal portfolio website.",
     link: "https://github.com/Aqueel-i/Aqueel-Ishak-Portfolio.git",
+    live: "https://aqueel-ishak.vercel.app/"
   },
   {
     title: "Expense Tracker",
     description: "Track your expenses visually and categorically.",
     tech: ["HTML", "CSS", "JavaScript"],
     image: "/images/project.png",
-    details: "LocalStorage-based tracking with pie charts and filtering, and a user-friendly interface, ensuring easy management of personal finances, with a focus on visual representation and categorization of expenses.",
+    details: "LocalStorage-based tracking with pie charts and filtering...",
     link: "https://github.com/Aqueel-i/Expense-Tracker.git",
+    live: "https://expense-tracker-lime-phi.vercel.app/"
   },
   {
     title: "Doctor Roster Generator",
     description: "Automate doctor roster creation for hospitals.",
     tech: ["FastAPI", "React"],
     image: "/images/project.png",
-    details: "Takes inputs and generates non-overlapping rosters. Skips weekends, and ensures no doctor is assigned more than 3 shifts in a week. The system is designed to be user-friendly, with a focus on efficiency and accuracy in roster generation.",
+    details: "Takes inputs and generates non-overlapping rosters...",
     link: "https://github.com/Aqueel-i/Doctors-Roster-Generator.git",
+    live: "https://doctors-roster-generator.vercel.app/"
   },
   {
     title: "To-Do List (WPF)",
@@ -64,7 +70,7 @@ const allProjects = [
     description: "Real-time chat with WebSockets.",
     tech: ["Node.js", "Socket.io", "React"],
     image: "/images/project.png",
-    details: "One-to-one and group chats with typing indicators and themes.",
+    details: "One-to-one and group chats with typing indicators...",
     link: "https://github.com/example/chat-app",
   },
   {
@@ -80,7 +86,7 @@ const allProjects = [
     description: "Get real-time weather updates.",
     tech: ["React", "OpenWeather API"],
     image: "/images/project.png",
-    details: "Shows temperature, humidity, and forecast using external API.",
+    details: "Shows temperature, humidity, and forecast...",
     link: "https://github.com/example/weather-app",
   },
   {
@@ -121,9 +127,9 @@ const allProjects = [
     tech: ["React", "API"],
     image: "/images/project.png",
     details: "Displays movies with poster, year, and description.",
-    
     link: "https://github.com/example/movie-app",
-  },];
+  },
+];
 
 const containerVariants = {
   hidden: {},
@@ -163,14 +169,26 @@ const Projects = () => {
               onClick={() => setSelectedProject(project)}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.97 }}
-              className={`bg-white rounded-2xl shadow-md p-6 cursor-pointer transition-all duration-300 hover:shadow-2xl hover:bg-indigo-50 ${index % 3 === 0
-                ? "row-span-2"
-                : index % 2 === 0
-                  ? "col-span-1"
-                  : ""
+              className={`bg-white rounded-2xl shadow-md p-6 cursor-pointer transition-all duration-300 hover:shadow-2xl hover:bg-indigo-50 ${index % 3 === 0 ? "row-span-2" : index % 2 === 0 ? "col-span-1" : ""
                 }`}
             >
-              <h3 className="text-xl font-semibold mb-1 text-indigo-700">{project.title}</h3>
+              <div className="flex items-center justify-between mb-1">
+                <h3 className="text-xl font-semibold text-indigo-700">
+                  {project.title}
+                </h3>
+                {project.live && (
+                  <a
+                    href={project.live}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-indigo-500 hover:text-indigo-700"
+                    onClick={(e) => e.stopPropagation()}
+                    title="Live Preview"
+                  >
+                    <Eye className="w-5 h-5" />
+                  </a>
+                )}
+              </div>
               <p className="text-gray-600 text-sm mb-2">{project.description}</p>
               <div className="flex flex-wrap gap-2 mt-2">
                 {project.tech.map((tech, i) => (
