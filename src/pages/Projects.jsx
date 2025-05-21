@@ -5,6 +5,15 @@ import ProjectModal from "./ProjectModal";
 
 const allProjects = [
   {
+    title: "Online Exam Portal",
+    description: "A full-stack online exam portal with role-based access and exam management.",
+    tech: ["React", "TypeScript", "Tailwind CSS", "Framer Motion", "React Router", "Context API"],
+    image: "/images/online-exam-portal.png",
+    details: "An online exam portal supporting admin and student roles, exam creation, question management, and secure login with smooth animations and protected routes.",
+    link: "https://github.com/yourusername/online-exam-portal",
+    live: "https://online-exam-portal-bice.vercel.app"
+  },
+  {
     title: "Polling System",
     description: "Real-time polling system for events.",
     tech: ["php", "tailwindcss", "Chart.js"],
