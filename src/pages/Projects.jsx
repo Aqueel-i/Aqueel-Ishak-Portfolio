@@ -32,6 +32,15 @@ const allProjects = [
     live: "https://just-a-login-page.vercel.app/"
   },
   {
+    title: "Fitness Tracker",
+    description: "Track your fitness activities and progress.",
+    tech: ["React", "TypeScript", "Tailwind CSS", "Framer Motion", "React Router", "Context API"],
+    image: "/images/project.png",
+    details: "A fitness tracker app to log workouts, track progress, and set goals with a user-friendly interface and smooth animations.",
+    link: "https://github.com/Aqueel-i/Fitness-Tracker.git",
+    live: "https://fitness-tracker-psi-nine.vercel.app/"
+  },
+  {
     title: "Green Leaf Hospital",
     description: "Hospital management system with appointment booking.",
     tech: ["python", "flask", "Chart.js", "react", "tailwindcss"],
