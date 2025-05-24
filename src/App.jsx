@@ -9,6 +9,7 @@ import ScrollToTop from "./components/ScrollToTop";
 
 import Hero from "./pages/Hero";
 import About from "./pages/About";
+import TechnicalSkills from "./pages/TechnicalSkills";
 import Projects from "./pages/Projects";
 import Resume from "./pages/Resume";
 import Contact from "./pages/Contact";
@@ -29,6 +30,7 @@ function App() {
       <main className="pt-24">
         <Hero />
         <About />
+        <TechnicalSkills />
         <Projects />
         <Resume />
         <Contact />
