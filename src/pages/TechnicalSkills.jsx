@@ -1,6 +1,5 @@
-// components/TechnicalSkills.jsx
 import React, { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   FaHtml5, FaCss3Alt, FaJs, FaReact, FaNodeJs, FaPython, FaGitAlt, FaGithub, FaLinux,
   FaJava, FaDocker, FaDatabase, FaServer, FaCode, FaProjectDiagram,
@@ -78,9 +77,11 @@ const TechnicalSkills = () => {
     Backend: skillGroups["Backend"][0],
     Tools: skillGroups["Tools"][0],
   });
+  const [filter, setFilter] = useState("");
 
   const handleGroupChange = (group) => {
     setActiveGroup(group);
+    setFilter("");
   };
 
   const handleCategoryChange = (category) => {
@@ -88,11 +89,16 @@ const TechnicalSkills = () => {
       ...prev,
       [activeGroup]: category,
     }));
+    setFilter("");
   };
+
+  const filteredSkills = categorizedSkills[activeCategory[activeGroup]].filter((skill) =>
+    skill.name.toLowerCase().includes(filter.toLowerCase())
+  );
 
   return (
     <section className="py-12 bg-gray-50 text-center" id="skills">
-       <h2 className="text-3xl font-bold text-indigo-600 mb-4">Technical Skills</h2>
+      <h2 className="text-3xl font-bold text-indigo-600  mb-4">Technical Skills</h2>
 
       {/* Group Tabs */}
       <div className="flex justify-center mb-6 gap-6 flex-wrap">
@@ -100,11 +106,10 @@ const TechnicalSkills = () => {
           <button
             key={group}
             onClick={() => handleGroupChange(group)}
-            className={`px-5 py-2 rounded-full font-semibold whitespace-nowrap transition-colors ${
-              activeGroup === group
+            className={`px-5 py-2 rounded-full font-semibold transition-colors ${activeGroup === group
                 ? "bg-indigo-600 text-white shadow-lg"
-                : "bg-white text-gray-700 border border-gray-300 hover:bg-indigo-100"
-            }`}
+                : "bg-white text-gray-700  border border-gray-300"
+              }`}
           >
             {group}
           </button>
@@ -112,16 +117,15 @@ const TechnicalSkills = () => {
       </div>
 
       {/* Category Tabs */}
-      <div className="flex justify-center mb-8 gap-4 flex-wrap">
+      <div className="flex justify-center mb-6 gap-4 flex-wrap">
         {skillGroups[activeGroup].map((category) => (
           <button
             key={category}
             onClick={() => handleCategoryChange(category)}
-            className={`px-4 py-2 rounded-full font-medium whitespace-nowrap transition-all ${
-              activeCategory[activeGroup] === category
+            className={`px-4 py-2 rounded-full font-medium transition-all ${activeCategory[activeGroup] === category
                 ? "bg-indigo-600 text-white"
-                : "bg-white text-gray-700 border border-gray-300"
-            }`}
+                : "bg-white text-gray-700  border border-gray-300"
+              }`}
           >
             {category}
           </button>
@@ -129,29 +133,40 @@ const TechnicalSkills = () => {
       </div>
 
       {/* Skills Grid */}
-      <div
-        className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 max-w-6xl mx-auto
-        overflow-x-auto px-4 scrollbar-thin scrollbar-thumb-indigo-500 scrollbar-track-gray-200"
-        style={{ WebkitOverflowScrolling: "touch" }}
-      >
-        {categorizedSkills[activeCategory[activeGroup]].map((skill, i) => (
+      <div className="max-w-6xl mx-auto px-4">
+        <AnimatePresence mode="wait">
           <motion.div
-            key={skill.name}
-            className="flex flex-col items-center bg-white shadow-md rounded-xl p-4 min-w-[120px] hover:scale-105 transition-transform"
+            key={activeCategory[activeGroup] + filter}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: i * 0.05 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.9, ease: "easeInOut" }}
+            className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6"
           >
-            <motion.div
-              className="text-4xl mb-2"
-              whileHover={{ rotate: 10, scale: 1.2 }}
-              whileTap={{ scale: 0.9 }}
-            >
-              {skill.icon}
-            </motion.div>
-            <p className="text-sm font-medium text-gray-700">{skill.name}</p>
+            {filteredSkills.map((skill, i) => (
+              <motion.div
+                key={skill.name}
+                className="flex flex-col items-center bg-white  shadow-md rounded-xl p-4 min-w-[120px] hover:scale-105 transition-transform"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{
+                  opacity: 1,
+                  y: [0, -5, 0],
+                }}
+                transition={{ delay: i * 0.9, duration: 2, repeat: Infinity }}
+              >
+                <motion.div
+                  title={skill.name}
+                  className="text-4xl mb-2"
+                  whileHover={{ rotate: 10, scale: 1.2 }}
+                  whileTap={{ scale: 0.9 }}
+                >
+                  {skill.icon}
+                </motion.div>
+                <p className="text-sm font-medium text-gray-700 ">{skill.name}</p>
+              </motion.div>
+            ))}
           </motion.div>
-        ))}
+        </AnimatePresence>
       </div>
     </section>
   );
