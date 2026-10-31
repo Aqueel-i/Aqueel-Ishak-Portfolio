@@ -57,25 +57,25 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-gray-100 py-8 text-center mt-10">
-      <div className="flex justify-center mb-4 space-x-4">
+    <footer className="site-footer">
+      <a href="#home" className="footer-wordmark">AQUEEL ISHAK<span>®</span></a>
+      <div className="footer-socials">
         {links.map(({ href, icon, label }) => (
           <a
             key={label}
             href={href}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gray-600 hover:text-indigo-600 transition"
+            className="footer-social-link"
             title={label}
+            aria-label={label}
           >
             <span className="sr-only">{label}</span>
-            <div className="p-2 rounded-full hover:bg-indigo-50 transition">{icon}</div>
+            <div>{icon}</div>
           </a>
         ))}
       </div>
-      <p className="text-sm text-gray-600">
-        &copy; {new Date().getFullYear()} Aqueel Ishak. All rights reserved.
-      </p>
+      <p className="footer-copyright">© {new Date().getFullYear()} Aqueel Ishak. Built with curiosity and coffee.</p>
     </footer>
   );
 };
